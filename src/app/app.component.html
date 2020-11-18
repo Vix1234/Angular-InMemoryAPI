@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <ul class="list-group" *ngFor="let book of books">
+        <li class="list-group-item">
+          <strong>Name: </strong>{{book.name}}
+          <br>
+          <strong>Author: </strong>{{book.author}}
+        </li>
+        <button class="btn btn-primary" (click)="editBook(book)">Edit book</button>
+        <button class="btn btn-warning" (click)="deleteBook(book)">Delete book</button>
+      </ul>
+    </div>
+    <div class="col-md-6 border">
+      <input type="text" #bookAuthor placeholder="Author">
+      <input type="text" #bookName placeholder="Name">
+      <button class="btn btn-secondary" (click)="addBook(bookAuthor.value, bookName.value); bookName.value=bookAuthor.value=''">Add book</button>
+      <hr>
+      <hr>
+      <div *ngIf="editing">
+        <input type="text" #bookAuthorEdit placeholder="Author">
+        <input type="text" #bookNameEdit placeholder="Name">
+        <button class="btn btn-danger" (click)="finishEditing(bookAuthorEdit.value,bookNameEdit.value)">Finish Editing</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
